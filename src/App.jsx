@@ -1,11 +1,31 @@
-import React from 'react'
-import Header from "./components/Header/Header"
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import Products from "./pages/home/Products";
+import Recipes from "./pages/about/Recipes";
+import Users from "./pages/contact/Users";
+import Post from './pages/Post/Post';
+import Login from './pages/Login/Login';
+import Layout from './pages/Layout/Layout';
+import NotFound from './pages/NotFound/NotFound';
+import ProductDetail from './pages/product-detail/ProductDetail';
+import AboutDetail from './pages/About-detail/AboutDetail';
+
 const App = () => {
   return (
-    <div>
-       <Header/>
-    </div>
-  )
-}
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<Products />} />
+        <Route path='recipes' element={<Recipes />} />
+        <Route path='users' element={<Users />} />
+        <Route path='post' element={<Post />} />
+        <Route path=':id' element={<ProductDetail />} />
+        <Route path='about/:id' element={<AboutDetail />} />
+        <Route path='*' element={<NotFound />} />
+      </Route>
+      <Route path='/login' element={<Login />} />
+    </Routes>
+  );
+};
 
-export default App
+export default App;
