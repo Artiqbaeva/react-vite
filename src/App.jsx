@@ -10,7 +10,8 @@ import Layout from './pages/Layout/Layout';
 import NotFound from './pages/NotFound/NotFound';
 import ProductDetail from './pages/product-detail/ProductDetail';
 import AboutDetail from './pages/About-detail/AboutDetail';
-
+import UserDetail from './pages/User-detail/UserDetail';
+import PostDetail from './pages/PostDetail/Post-Detail';
 const App = () => {
   return (
     <Routes>
@@ -19,8 +20,12 @@ const App = () => {
         <Route path='recipes' element={<Recipes />} />
         <Route path='users' element={<Users />} />
         <Route path='post' element={<Post />} />
-        <Route path=':id' element={<ProductDetail />} />
-        <Route path='about/:id' element={<AboutDetail />} />
+
+        <Route path='/products/:id' element={<ProductDetail />} />
+        <Route path="/users/:id" element={<UserDetail />} />
+        <Route path="/posts/:id" element={<PostDetail />} />
+        <Route path="/recipes/:id" element={<AboutDetail />} />
+
         <Route path='*' element={<NotFound />} />
       </Route>
       <Route path='/login' element={<Login />} />

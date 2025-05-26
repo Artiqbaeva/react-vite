@@ -12,7 +12,7 @@ const Users = () => {
   }, []);
 
   return (
-    <div className="container mx-auto py-10 px-4">
+    <div className="container mx-auto py-10 px-4 ">
       <h1 className="text-4xl font-bold mb-8 text-center">Our Users</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {users.map((user) => (
@@ -39,11 +39,11 @@ const Users = () => {
                 </div>
               </div>
               <button
-                onClick={() => navigate(`/contact/${user.id}`)}
-                className="mt-5 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-full transition duration-200"
-              >
-                View Profile
-              </button>
+                onClick={() => navigate(`/users/${user.id}`)}
+                  className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  View Profile
+                </button>
             </div>
           </div>
         ))}

@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../api";
 
 const Products = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    api.get("/products").then((res) => setProducts(res.data.products));
+    api.get("/products")
+      .then((res) => setProducts(res.data.products))
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -13,7 +17,8 @@ const Products = () => {
       {products.map((product) => (
         <div
           key={product.id}
-          className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all p-5"
+          className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all p-5 cursor-pointer"
+          onClick={() => navigate(`/products/${product.id}`)}
         >
           <img
             src={product.thumbnail}
@@ -24,7 +29,7 @@ const Products = () => {
           <p className="text-gray-600 truncate">{product.description}</p>
           <div className="mt-3 flex justify-between items-center">
             <span className="text-green-600 font-semibold">${product.price}</span>
-            <span className="text-sm text-gray-500 font-[sans-serif]"> {product.rating}</span>
+            <span className="text-sm text-gray-500 font-[sans-serif]">{product.rating}</span>
           </div>
         </div>
       ))}
